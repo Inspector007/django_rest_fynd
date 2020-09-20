@@ -25,7 +25,7 @@ SECRET_KEY = '!zxmc^48#eli@!494w9^#56#nf*xp7s&#zu+n)82z&yxsnwnu#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['quiet-brook-50483.herokuapp.com/','localhost']
+ALLOWED_HOSTS = ['quiet-brook-50483.herokuapp.com','localhost']
 
 
 

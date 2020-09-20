@@ -14,7 +14,7 @@ A REST api written in Django for people with deadlines
     ```
 * Then, Git clone this repo to your PC
     ```bash
-        $ git clone https://github.com/gitgik/django-rest-api.git
+        $ git clone https://github.com/Inspector007/django_rest_fynd.git
     ```
 
 * #### Dependencies

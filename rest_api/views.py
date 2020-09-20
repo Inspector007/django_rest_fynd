@@ -2,7 +2,7 @@ from rest_framework import generics, permissions
 from .serializers import ImdbRatingModelSerializer
 from .models import ImdbRatingModel
 from django.contrib.auth.models import User
-import django_filters
+# import django_filters
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.filters import SearchFilter, OrderingFilter
 
@@ -26,10 +26,10 @@ class DetailsImdbRatingView(generics.RetrieveUpdateDestroyAPIView):
         permissions.IsAuthenticated,)
 
 
-class ImdbRatingModelFilter(django_filters.FilterSet):
-    class Meta:
-        model = ImdbRatingModel
-        fields = ['id','popularity_99','director','genre','imdb_score','name']
+# class ImdbRatingModelFilter(django_filters.FilterSet):
+#     class Meta:
+#         model = ImdbRatingModel
+#         fields = ['id','popularity_99','director','genre','imdb_score','name']
 
 
 class RetrieveImdbRatingView(generics.ListAPIView):

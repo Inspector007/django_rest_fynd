@@ -1,6 +1,6 @@
 from rest_framework import generics, permissions
-from .serializers import ImdbRatingModelSerializer
-from .models import ImdbRatingModel
+from .serializers import ImdbRatingModelSerializer, UserKpiDetailSerializer
+from .models import ImdbRatingModel, UserKpiDetail
 from django.contrib.auth.models import User
 # import django_filters
 from rest_framework.pagination import PageNumberPagination
@@ -42,3 +42,17 @@ class RetrieveImdbRatingView(generics.ListAPIView):
     # filter_class = ImdbRatingModelFilter
     # filter_fields = ('name')
 
+
+
+class CreateUserKpiDetailView(generics.ListCreateAPIView):
+    """This class handles the GET and POSt requests of our rest api."""
+    queryset = UserKpiDetail.objects.all()
+    serializer_class = UserKpiDetailSerializer
+    
+
+class DetailUserKpiView(generics.RetrieveUpdateDestroyAPIView):
+    """This class handles GET, PUT, PATCH and DELETE requests."""
+
+    queryset = UserKpiDetail.objects.all()
+    serializer_class = UserKpiDetailSerializer
+    

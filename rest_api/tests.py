@@ -1,7 +1,7 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
 from rest_framework import status
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from .models import ImdbRatingModel
 from django.contrib.auth.models import User
 
@@ -13,8 +13,17 @@ class ModelTestCase(TestCase):
         """Define the test client and other test variables."""
         user = User.objects.create(username="nerd")
         self.name = "Write world class code"
+        self.popularity_99 = 83.0
+        self.director = "Victor Fleming"
+        self.genre = '["Adventure", " Family"," Fantasy", " Musical"]'
+        self.imdb_score = 8.3
         # specify owner of a imdbratingmodel
-        self.imdbratingmodel = ImdbRatingModel(name=self.name, owner=user)
+        self.imdbratingmodel = ImdbRatingModel(name=self.name,
+            popularity_99 = self.popularity_99,
+            director = self.director,
+            genre = self.genre,
+            imdb_score = self.imdb_score,
+            )
 
     def test_model_can_create_a_imdbratingmodel(self):
         """Test the imdbratingmodel model can create a imdbratingmodel."""
@@ -79,7 +88,7 @@ class ViewsTestCase(TestCase):
 
     def test_api_can_update_imdbratingmodel(self):
         """Test the api can update a given imdbratingmodel."""
-        imdbratingmodel = ImdbRatingModel.objects.get()
+        imdbratingmodel = ImdbRatingModel.objects.get(id=1)
         change_imdbratingmodel = {'name': 'Something new'}
         res = self.client.put(
             reverse('imdbratingdetails', kwargs={'pk': imdbratingmodel.id}),
@@ -89,7 +98,7 @@ class ViewsTestCase(TestCase):
 
     def test_api_can_delete_imdbratingmodel(self):
         """Test the api can delete a imdbratingmodel."""
-        imdbratingmodel = ImdbRatingModel.objects.get()
+        imdbratingmodel = ImdbRatingModel.objects.get(id=1)
         response = self.client.delete(
             reverse('imdbratingdetails', kwargs={'pk': imdbratingmodel.id}),
             format='json',
